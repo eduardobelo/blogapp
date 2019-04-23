@@ -7,13 +7,21 @@
 {{#each categorias}}
     <div class="card mt-4">
         <div class="card-body">
-            <h2>{{nome}}</h2>
-            <small>Slug: {{slug}}</small> <br />
-            <small>{{date}}</small>
-            <a href="/admin/categorias/edit/{{_id}}" class="float-right">
+            <div class="box-texto">
+                <h2>{{nome}}</h2>
+                <small>Slug: {{slug}}</small> <br />
+                <small>{{date}}</small>
+            </div>
+            <a href="/admin/categorias/edit/{{_id}}" class="float-left mt-4">
                 <button class="btn btn-success">Editar Categoria</button>
             </a>
+            <form action="/admin/categorias/deletar" method="POST" class="mt-4">
+                <input type="hidden" name="id" value="{{_id}}">
+                <button type="submit" class="btn btn-danger float-right">Excluir Categoria</button>
+            </form>
         </div>
     </div>
 {{else}}
+<h1>Nenhuma categoria cadastrada</h1>
+<hr>
 {{/each}}
